@@ -11,6 +11,7 @@ public class StatsPanel
     private Leaderboard leaderboard;
     private SponsorSystem sponsorSystem;
 
+    // Constructor
     public StatsPanel(JPanel panel, Typist[] typists, Typist winner, double wpm, Leaderboard leaderboard, SponsorSystem sponsorSystem)
     {
         this.panel = panel;
@@ -29,6 +30,7 @@ public class StatsPanel
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+        // Title
         JLabel title = new JLabel("Race Statistics");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setFont(new Font("Arial", Font.BOLD, 24));
@@ -47,6 +49,7 @@ public class StatsPanel
         panel.add(wpmLabel);
         panel.add(Box.createVerticalStrut(20));
 
+        // Display stats for each typist
         for (Typist t : typists)
         {
             JLabel nameLabel = new JLabel(t.getSymbol() + " " + t.getName());
@@ -67,6 +70,7 @@ public class StatsPanel
                 }
             }
 
+            // Show sponsor if they have one, otherwise show "No Sponsor"
             JLabel sponsorLabel = new JLabel("Sponsor: " + sponsorSystem.getSponsor(sponsorIndex));
             sponsorLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -89,6 +93,8 @@ public class StatsPanel
             panel.add(earningsLabel);
             panel.add(Box.createVerticalStrut(5));
             panel.add(historyTitle);
+
+            // Display each race record in the history
             for (String record : history) {
                 JLabel historyLabel = new JLabel(record);
                 historyLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -98,6 +104,7 @@ public class StatsPanel
             panel.add(Box.createVerticalStrut(15));
         }
 
+        // Buttons
         JButton compareButton = new JButton("Compare Typists");
         compareButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         compareButton.addActionListener(e -> showComparison());
@@ -134,6 +141,7 @@ public class StatsPanel
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+        // Title
         JLabel title = new JLabel("Typist Comparison");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setFont(new Font("Arial", Font.BOLD, 24));
@@ -148,6 +156,7 @@ public class StatsPanel
         panel.add(header);
         panel.add(Box.createVerticalStrut(10));
 
+        // Display comparison stats for each typist
         for (Typist t : typists)
         {
             double personalBest = leaderboard.getPersonalBest(leaderboard.getNames().indexOf(t.getName()));
@@ -162,6 +171,7 @@ public class StatsPanel
             panel.add(Box.createVerticalStrut(5));
         }
 
+        // Back button to return to stats
         JButton backButton = new JButton("Back to Stats");
         backButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         backButton.addActionListener(e -> showStats());

@@ -12,6 +12,7 @@ public class TypistSetupPanel
     private boolean nightShift;
     private String passageText;
 
+    // Constructor 
     public TypistSetupPanel(JPanel panel, int passageLength, String passageText, Leaderboard leaderboard, 
     SponsorSystem sponsorSystem, boolean autocorrect, boolean caffeineMode, boolean nightShift)
     {
@@ -33,6 +34,7 @@ public class TypistSetupPanel
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+        // Title
         JLabel title = new JLabel("Customise Your Typists");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setFont(new Font("Arial", Font.BOLD, 24));
@@ -40,6 +42,7 @@ public class TypistSetupPanel
         panel.add(title);
         panel.add(Box.createVerticalStrut(20));
 
+        // Arrays to hold input components for each typist
         JTextField[] nameFields = new JTextField[numTypists];
         JTextField[] symbolFields = new JTextField[numTypists];
         JComboBox[] styleBoxes = new JComboBox[numTypists];
@@ -51,6 +54,7 @@ public class TypistSetupPanel
         String[] styles = {"Touch Typist", "Hunt & Peck", "Phone Thumbs", "Voice-to-Text"};
         String[] keyboards = {"Mechanical", "Membrane", "Touchscreen", "Stenography"};
 
+        // Create input fields for each typist
         for (int i = 0; i < numTypists; i++)
         {
             JLabel typistTitle = new JLabel("Typist " + (i + 1));
@@ -93,6 +97,7 @@ public class TypistSetupPanel
             headphones[i] = new JCheckBox("Noise-Cancelling Headphones (reduces mistype chance)");
             headphones[i].setAlignmentX(Component.CENTER_ALIGNMENT);
 
+            // Add components to panel
             panel.add(typistTitle);
             panel.add(Box.createVerticalStrut(5));
             panel.add(nameLabel);
@@ -116,6 +121,7 @@ public class TypistSetupPanel
 
         Typist[] typists = new Typist[numTypists];
 
+        // Next button
         JButton nextButton = new JButton("Continue to Race");
         nextButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         nextButton.addActionListener(e -> {
@@ -123,6 +129,7 @@ public class TypistSetupPanel
             boolean[] hasEnergyDrink = new boolean[numTypists];
             boolean[] hasHeadphones = new boolean[numTypists];
 
+            // Create typist objects based on user input
             for (int i = 0; i < numTypists; i++)
             {
                 String name = nameFields[i].getText();

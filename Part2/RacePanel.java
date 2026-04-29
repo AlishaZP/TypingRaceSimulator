@@ -19,6 +19,8 @@ public class RacePanel
     private boolean[] hasHeadphones;
     private String passageText;
 
+
+    // Constructor
     public RacePanel(JPanel panel, Typist[] typists, int passageLength, String passageText, 
         Leaderboard leaderboard, SponsorSystem sponsorSystem, boolean autocorrect, 
         boolean caffeineMode, boolean nightShift, boolean[] hasWristSupport, 
@@ -47,6 +49,7 @@ public class RacePanel
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+        // Title
         JLabel title = new JLabel("Race in Progress!");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setFont(new Font("Arial", Font.BOLD, 24));
@@ -63,6 +66,7 @@ public class RacePanel
         panel.add(passagePane);
         panel.add(Box.createVerticalStrut(20));
 
+        // Typist progress bars
         for (int i = 0; i < typists.length; i++)
         {
             JLabel nameLabel = new JLabel(typists[i].getSymbol() + " " + typists[i].getName());
@@ -107,6 +111,7 @@ public class RacePanel
                     t.setAccuracy(t.getAccuracy() - 0.1);
                 }
             }
+
             int turn = 0;
             while (!finished)
             {
@@ -125,6 +130,7 @@ public class RacePanel
                     }
                 });
 
+                // Check for winner
                 for (Typist t : typists) {
                     if (t.getProgress() >= passageLength && winner == null) {
                         winner = t;
@@ -142,6 +148,7 @@ public class RacePanel
             wpm = (passageLength / 5.0) / (timeSeconds / 60.0);
             final double finalWpm = wpm;
 
+            // Record results in leaderboard and sponsor system
             for (int i = 0; i < typists.length; i++) {
                 int position = typists[i] == winner ? 1 : 2;
                 leaderboard.recordResult(typists[i].getName(), position, typists[i].getBurnoutCount() > 0);
@@ -151,6 +158,7 @@ public class RacePanel
                 
             }
 
+            // Show winner and continue button 
             final Typist finalWinner = winner;
             SwingUtilities.invokeLater(() -> {
                 JLabel winnerLabel = new JLabel("And the winner is... " + finalWinner.getName() + "!");

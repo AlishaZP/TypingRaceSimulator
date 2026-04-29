@@ -23,7 +23,7 @@ public class Typist
     private boolean isBurntOut;
     private int burnoutTurnsRemaining;
     private double typistAccuracy;
-    private int burnoutCount; // * optional
+    private int burnoutCount;
 
     // Constructor of class Typist
     /**
@@ -53,7 +53,7 @@ public class Typist
     {
         this.isBurntOut = true;
         this.burnoutTurnsRemaining = turns;
-        this.burnoutCount++; // ← add this
+        this.burnoutCount++;
     }
 
     /**
@@ -133,7 +133,7 @@ public class Typist
         progress = 0;
         isBurntOut = false;
         burnoutTurnsRemaining = 0;
-        burnoutCount = 0; // ← add this
+        burnoutCount = 0; 
     }
 
     /**
@@ -191,9 +191,9 @@ public class Typist
     public void setAccuracy(double newAccuracy)
     {
         if (newAccuracy < 0.0) {
-            this.typistAccuracy = 0.0;
+            this.typistAccuracy = 0.0; // makes sure it's not below 0.0
         } else if (newAccuracy > 1.0) {
-            this.typistAccuracy = 1.0;
+            this.typistAccuracy = 1.0; // makes sure it's not above 1.0
         } else {
             this.typistAccuracy = newAccuracy;
         }

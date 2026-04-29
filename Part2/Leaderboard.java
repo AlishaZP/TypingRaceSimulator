@@ -10,6 +10,7 @@ public class Leaderboard
     private ArrayList<Double> personalBests; 
     private ArrayList<ArrayList<String>> raceHistory; 
 
+    // Constructor
     public Leaderboard()
     {
         names = new ArrayList<>();
@@ -34,6 +35,7 @@ public class Leaderboard
         }
     }
 
+    // Update personal best WPM if the new WPM is higher
     public void updatePersonalBest(String name, double wpm)
     {
         int index = names.indexOf(name);
@@ -43,6 +45,7 @@ public class Leaderboard
         }
     }
 
+    // Add a race record to the typist's history
     public void addRaceHistory(String name, int position, double wpm, int burnouts)
     {
         int index = names.indexOf(name);
@@ -51,6 +54,7 @@ public class Leaderboard
         raceHistory.get(index).add(record);
     }
 
+    // Get the race history for a typist
     public ArrayList<String> getRaceHistory(String name)
     {
         int index = names.indexOf(name);
@@ -58,13 +62,15 @@ public class Leaderboard
         return raceHistory.get(index);
     }
 
-public double getPersonalBest(int index) { 
-    return personalBests.get(index);
-} 
+    // Get the personal best WPM for a typist
+    public double getPersonalBest(int index) { 
+        return personalBests.get(index);
+    } 
 
-public ArrayList<String> getNames() { 
-    return names; 
-}
+    // Get the list of typist names
+    public ArrayList<String> getNames() { 
+        return names; 
+    }
 
     // Award points based on finishing position
     // 1st = 3pts, 2nd = 2pts, 3rd = 1pt
@@ -91,11 +97,26 @@ public ArrayList<String> getNames() {
         }
     }
 
-    public String getName(int index) { return names.get(index); }
-    public int getPoints(int index) { return points.get(index); }
-    public int getWins(int index) { return wins.get(index); }
-    public int getRacesPlayed(int index) { return racesPlayed.get(index); }
-    public int getSize() { return names.size(); }
+    // Getters for leaderboard data
+    public String getName(int index) {
+         return names.get(index); 
+        }
+
+    public int getPoints(int index) {
+         return points.get(index); 
+        }
+
+    public int getWins(int index) {
+         return wins.get(index); 
+        }
+
+    public int getRacesPlayed(int index) {
+         return racesPlayed.get(index); 
+        }
+
+    public int getSize() { 
+        return names.size(); 
+    }
 
     // Get badge based on wins
     public String getBadge(String name)
@@ -111,6 +132,7 @@ public ArrayList<String> getNames() {
         return "🎯 Competitor";
     }
 
+    // Sort the leaderboard by points in descending order
     public void sortByPoints()
     {
         for (int i = 0; i < names.size() - 1; i++) {

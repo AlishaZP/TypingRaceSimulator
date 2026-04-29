@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
+// Main GUI class
 public class TypingRaceGUI
 {
     private JComboBox<String> passageBox;
@@ -17,6 +18,7 @@ public class TypingRaceGUI
     private static final String MEDIUM_PASSAGE = "The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs.";
     private static final String LONG_PASSAGE = "The quick brown fox jumps over the lazy dog. Pack my box with five dozen liquor jugs. How vexingly quick daft zebras jump over the wax fence.";
 
+    // Constructor to set up the main frame and panel
     public TypingRaceGUI()
     {
         frame = new JFrame("Typing Race Simulator");
@@ -135,6 +137,7 @@ public class TypingRaceGUI
         panel.add(Box.createVerticalStrut(30));
         panel.add(startButton);
 
+        // Add panel to scroll pane
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         frame.add(scrollPane);

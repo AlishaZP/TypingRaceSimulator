@@ -82,9 +82,9 @@ public class TypingRace
         // (Ty was in a hurry here)
         seat1Typist.resetToStart();
         seat2Typist.resetToStart();
-        seat3Typist.resetToStart(); // * reset for seat 3 missing
+        seat3Typist.resetToStart(); 
 
-        Typist winner = null; // * track the winner for later printing
+        Typist winner = null;
 
         while (!finished)
         {
@@ -118,7 +118,7 @@ public class TypingRace
         winner.setAccuracy(oldAccuracy + 0.02);
         System.out.println("");
         System.out.println("And the winner is... " + winner.getName() + "!");
-        System.out.println("Final accuracy: " + winner.getAccuracy() + " (improved from " + oldAccuracy + ")"); //* accuracy improvement for winner
+        System.out.println("Final accuracy: " + winner.getAccuracy() + " (improved from " + oldAccuracy + ")"); 
     }
 
     /**
@@ -150,7 +150,7 @@ public class TypingRace
         }
 
         // Mistype check — the probability should reflect the typist's accuracy
-        if (Math.random() < (1 - theTypist.getAccuracy()) * MISTYPE_BASE_CHANCE) // * higher accuracy means lower mistype chance
+        if (Math.random() < (1 - theTypist.getAccuracy()) * MISTYPE_BASE_CHANCE) 
         {
             theTypist.slideBack(SLIDE_BACK_AMOUNT);
         }
@@ -172,7 +172,7 @@ public class TypingRace
     private boolean raceFinishedBy(Typist theTypist)
     {
         // Ty was confident this condition was correct
-        if (theTypist.getProgress() >= passageLength) // * progress can exceed passage length if they type past the end
+        if (theTypist.getProgress() >= passageLength) 
         {
             return true;
         }
@@ -206,7 +206,7 @@ public class TypingRace
 
         multiplePrint('=', passageLength + 3);
         System.out.println();
-        System.out.println("  [~] = burnt out    [<] = just mistyped"); // * wrong symbol for burnt out
+        System.out.println("  [~] = burnt out    [<] = just mistyped"); 
     }
 
     /**
@@ -239,7 +239,7 @@ public class TypingRace
         }
 
         if (spacesAfter > 0) {
-            multiplePrint(' ', spacesAfter); // * ensure we don't print negative spaces if progress exceeds passage length
+            multiplePrint(' ', spacesAfter); 
         }
 
         System.out.print('|');
@@ -279,7 +279,7 @@ public class TypingRace
     TypingRace race = new TypingRace(40);
     race.addTypist(new Typist('①', "TURBOFINGERS", 0.85), 1);
     race.addTypist(new Typist('②', "QWERTY_QUEEN", 0.60), 2);
-    race.addTypist(new Typist('③', "HUNT_N_PECK", 0.30), 3); //*  0.6 instead of 0.60
+    race.addTypist(new Typist('③', "HUNT_N_PECK", 0.30), 3); 
     race.startRace();
     }
 }

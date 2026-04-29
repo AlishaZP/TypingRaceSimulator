@@ -6,6 +6,7 @@ public class LeaderboardPanel
     private JPanel panel;
     private Leaderboard leaderboard;
 
+    // Constructor
     public LeaderboardPanel(JPanel panel, Leaderboard leaderboard)
     {
         this.panel = panel;
@@ -21,6 +22,7 @@ public class LeaderboardPanel
 
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 
+        // Title
         JLabel title = new JLabel("Leaderboard");
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setFont(new Font("Arial", Font.BOLD, 24));
@@ -55,6 +57,7 @@ public class LeaderboardPanel
 
         panel.add(Box.createVerticalStrut(20));
 
+        // Play Again Button
         JButton playAgainButton = new JButton("Play Again");
         playAgainButton.setAlignmentX(Component.CENTER_ALIGNMENT);
         playAgainButton.addActionListener(e -> {
